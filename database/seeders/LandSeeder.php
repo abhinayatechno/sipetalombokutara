@@ -6,6 +6,8 @@ use App\Models\Land;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+// php artisan db:seed --class=LandSeeder
+
 class LandSeeder extends Seeder
 {
     /**
@@ -14,7 +16,7 @@ class LandSeeder extends Seeder
     public function run(): void
     {
         // Read GeoJSON file
-        $geojsonPath = database_path('seeders/data/geojson.json');
+        $geojsonPath = database_path('seeders/data/geojson-250407.json');
         
         if (!file_exists($geojsonPath)) {
             $this->command->error("File GeoJSON tidak ditemukan: {$geojsonPath}");
