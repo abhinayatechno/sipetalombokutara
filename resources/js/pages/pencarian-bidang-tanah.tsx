@@ -80,10 +80,10 @@ export default function PencarianBidangTanah() {
     const [isMounted, setIsMounted] = useState(false);
     const [isFilterOpen, setIsFilterOpen] = useState(true);
     const [nomorSertifikat, setNomorSertifikat] = useState(
-        filters.nomor_sertifikat || '',
+        filters.nomor_sertifikat?.trim() || '',
     );
-    const [namaPemilik, setNamaPemilik] = useState(filters.nama_pemilik || '');
-    const [lokasi, setLokasi] = useState(filters.lokasi || '');
+    const [namaPemilik, setNamaPemilik] = useState(filters.nama_pemilik?.trim() || '');
+    const [lokasi, setLokasi] = useState(filters.lokasi?.trim() || '');
     const [selectedLand, setSelectedLand] = useState<Land | null>(null);
     const [showLoginPrompt, setShowLoginPrompt] = useState(false);
     const mapRef = useRef<L.Map | null>(null);
@@ -232,9 +232,9 @@ export default function PencarianBidangTanah() {
         router.get(
             '/pencarian-bidang-tanah',
             {
-                nomor_sertifikat: nomorSertifikat,
-                nama_pemilik: namaPemilik,
-                lokasi: lokasi,
+                nomor_sertifikat: nomorSertifikat?.trim() || undefined,
+                nama_pemilik: namaPemilik?.trim() || undefined,
+                lokasi: lokasi?.trim() || undefined,
             },
             { preserveState: true },
         );
@@ -459,7 +459,7 @@ export default function PencarianBidangTanah() {
                                                 value={nomorSertifikat}
                                                 onChange={(e) =>
                                                     setNomorSertifikat(
-                                                        e.target.value,
+                                                        e.target.value?.trim()
                                                     )
                                                 }
                                                 className="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 text-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 focus:outline-none"
