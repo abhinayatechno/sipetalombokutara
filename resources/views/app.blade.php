@@ -32,6 +32,10 @@
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
+        <meta name="application-name" content="{{ config('app.name', 'Laravel') }}">
+        <meta name="theme-color" content="#06b6d4">
+        <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}">
+
         <link rel="icon" href="/logo-klu.ico" sizes="any">
         <link rel="icon" href="/logo-klu.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">

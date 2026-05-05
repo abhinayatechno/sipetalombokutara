@@ -19,6 +19,27 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/sitemap.xml', function () {
+    $urls = [
+        route('home'),
+        route('main-menu'),
+        route('pencarian.batas-administrasi'),
+        route('brankas-elektronik'),
+        route('pencarian.bidang-tanah'),
+    ];
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+    foreach ($urls as $url) {
+        $xml .= '<url><loc>'.e($url).'</loc></url>';
+    }
+
+    $xml .= '</urlset>';
+
+    return response($xml, 200)->header('Content-Type', 'application/xml');
+})->name('sitemap');
+
 Route::get('/main-menu', function () {
     return Inertia::render('main-menu');
 })->name('main-menu');

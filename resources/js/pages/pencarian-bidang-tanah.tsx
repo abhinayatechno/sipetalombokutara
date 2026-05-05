@@ -12,8 +12,9 @@ import {
     coordToLeaflet,
     parseCoordinates,
 } from '@/lib/map-utils';
+import { getCanonicalUrl } from '@/lib/seo';
 import { CustomFieldDefinition, Land, type SharedData } from '@/types';
-import { router, usePage } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {
@@ -267,7 +268,26 @@ export default function PencarianBidangTanah() {
     };
 
     return (
-        <div className="relative h-screen w-full overflow-hidden">
+        <>
+            <Head title="Pencarian Bidang Tanah - SIPETA (Sistem Pencarian Tanah) Kabupaten Lombok Utara">
+                <link rel="canonical" href={getCanonicalUrl('/pencarian-bidang-tanah')} />
+                <meta
+                    name="description"
+                    content="Cari bidang tanah di Kabupaten Lombok Utara berdasarkan nomor sertifikat, nama pemilik, atau lokasi."
+                />
+                <meta
+                    property="og:title"
+                    content="Pencarian Bidang Tanah - SIPETA (Sistem Pencarian Tanah) Kabupaten Lombok Utara"
+                />
+                <meta
+                    property="og:description"
+                    content="Cari bidang tanah berdasarkan nomor sertifikat, nama pemilik, atau lokasi di Kabupaten Lombok Utara."
+                />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="/assets/logo-klu.png" />
+                <meta name="twitter:card" content="summary_large_image" />
+            </Head>
+            <div className="relative h-screen w-full overflow-hidden">
             {/* Header - Fixed at top */}
             <div className="pointer-events-auto absolute top-0 right-0 left-0 z-20 bg-cyan-500/60 shadow-md">
                 <div className="container mx-auto">
@@ -414,7 +434,7 @@ export default function PencarianBidangTanah() {
 
             {/* Filter Panel - Top Left (below header) */}
             <div className="pointer-events-none absolute top-0 left-0 z-10 p-4 pt-20 sm:p-6 sm:pt-36">
-                <div className="pointer-events-auto flex w-[90vw] items-start gap-2 md:w-[350px]">
+                <div className="pointer-events-auto flex w-[90vw] items-start gap-2 md:w-87.5">
                     {/* Toggle Button */}
                     {!isFilterOpen && (
                         <Button
@@ -775,6 +795,7 @@ export default function PencarianBidangTanah() {
                     </div>
                 </DialogContent>
             </Dialog>
-        </div>
+            </div>
+        </>
     );
 }
