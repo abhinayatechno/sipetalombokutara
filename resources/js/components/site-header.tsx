@@ -45,15 +45,13 @@ export default function SiteHeader() {
                         Beranda
                     </a>
 
-                    {auth.user && (
-                        <a
-                            href="/pencarian-bidang-tanah"
-                            className="flex items-center gap-2 text-sm font-bold text-white uppercase transition-colors hover:text-yellow-300 lg:text-base"
-                        >
-                            <SearchIcon className="h-5 w-5" />
-                            Pencarian Bidang Tanah
-                        </a>
-                    )}
+                    <a
+                        href="/pencarian-bidang-tanah"
+                        className="flex items-center gap-2 text-sm font-bold text-white uppercase transition-colors hover:text-yellow-300 lg:text-base"
+                    >
+                        <SearchIcon className="h-5 w-5" />
+                        Pencarian Bidang Tanah
+                    </a>
 
                     {/* <a
                         href="/main-menu"
@@ -128,16 +126,14 @@ export default function SiteHeader() {
                                 <HomeIcon className="h-6 w-6" />
                                 Beranda
                             </a>
-                            {auth.user && (
-                                <a
-                                    href="/pencarian-bidang-tanah"
-                                    className="flex items-center gap-3 font-bold text-white uppercase transition-colors hover:text-yellow-300"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    <SearchIcon className="h-6 w-6" />
-                                    Pencarian Bidang Tanah
-                                </a>
-                            )}
+                            <a
+                                href="/pencarian-bidang-tanah"
+                                className="flex items-center gap-3 font-bold text-white uppercase transition-colors hover:text-yellow-300"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <SearchIcon className="h-6 w-6" />
+                                Pencarian Bidang Tanah
+                            </a>
                             {/* <a
                                 href="/main-menu"
                                 className="flex items-center gap-3  font-bold text-white uppercase transition-colors hover:text-yellow-300"
