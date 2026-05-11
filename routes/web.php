@@ -23,6 +23,7 @@ Route::get('/sitemap.xml', function () {
     $urls = [
         route('home'),
         route('main-menu'),
+        route('about'),
         route('pencarian.batas-administrasi'),
         route('brankas-elektronik'),
         route('pencarian.bidang-tanah'),
@@ -44,6 +45,9 @@ Route::get('/main-menu', function () {
     return Inertia::render('main-menu');
 })->name('main-menu');
 
+Route::get('/about', function () {
+    return Inertia::render('about');
+})->name('about');
 
 Route::get('/pencarian-batas-administrasi', function () {
     return Inertia::render('pencarian-batas-administrasi');

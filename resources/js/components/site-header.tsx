@@ -2,6 +2,7 @@ import {
     CloseIcon,
     DashboardIcon,
     HomeIcon,
+    InfoIcon,
     MenuIcon,
     SearchIcon,
 } from '@/components/icons';
@@ -51,6 +52,14 @@ export default function SiteHeader() {
                     >
                         <SearchIcon className="h-5 w-5" />
                         Pencarian Bidang Tanah
+                    </a>
+
+                    <a
+                        href="/about"
+                        className="flex items-center gap-2 text-sm font-bold text-white uppercase transition-colors hover:text-yellow-300 lg:text-base"
+                    >
+                        <InfoIcon className="h-5 w-5" />
+                        About
                     </a>
 
                     {/* <a
@@ -133,6 +142,14 @@ export default function SiteHeader() {
                             >
                                 <SearchIcon className="h-6 w-6" />
                                 Pencarian Bidang Tanah
+                            </a>
+                            <a
+                                href="/about"
+                                className="flex items-center gap-3 font-bold text-white uppercase transition-colors hover:text-yellow-300"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <InfoIcon className="h-6 w-6" />
+                                About
                             </a>
                             {/* <a
                                 href="/main-menu"
