@@ -13,11 +13,11 @@ const leadershipStructure = [
 const subfields = [
     'Kepala Subbidang Pengendalian dan Pemanfaatan Barang Milik Daerah',
     'Kepala Subbidang Pengamanan, Pengalihan dan Penghapusan Barang Milik Daerah',
+    'Analis Kebijakan Ahli Muda',
+    'Analis Kebijakan Ahli Pertama',
 ];
 
 const functionalRoles = [
-    'Analis Kebijakan Ahli Muda',
-    'Analis Kebijakan Ahli Pertama',
     'Penelaah Teknis Kebijakan',
     'Pengolah Data dan Informasi',
     'Pengelola Layanan Operasional',
@@ -47,12 +47,12 @@ export default function About() {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
 
-            <div className="relative min-h-screen overflow-hidden bg-cyan-400">
+            <div className="relative min-h-screen overflow-hidden bg-cyan-950">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-25"
                     style={{ backgroundImage: 'url(/assets/background-2.png)' }}
                 />
-                <div className="absolute inset-0 bg-linear-to-b from-cyan-500/95 via-cyan-400/90 to-cyan-500/95" />
+                <div className="absolute inset-0 bg-linear-to-b from-cyan-950/95 via-cyan-900/90 to-cyan-950/95" />
 
                 <div className="relative z-10">
                     <div className="container mx-auto">
@@ -80,7 +80,7 @@ export default function About() {
                             <div className="space-y-4">
                                 <div className="rounded-lg bg-white p-5 shadow-2xl">
                                     <div className="flex gap-4 items-center">
-                                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-100 text-cyan-700">
+                                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-400 text-white">
                                         <MessageCircle className="h-6 w-6" />
                                         </div>
                                         <h2 className="text-xl font-black text-gray-900">
@@ -95,10 +95,10 @@ export default function About() {
                                         href={whatsappUrl}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-cyan-600 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-cyan-700 sm:w-auto"
+                                        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-green-500 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-green-400 sm:w-auto"
                                     >
                                         <MessageCircle className="h-5 w-5" />
-                                        +62 823-4086-6669
+                                        Hubungi WhatsApp
                                     </a>
                                 </div>
 
@@ -126,7 +126,8 @@ export default function About() {
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-black text-gray-900 sm:text-2xl">
-                                            Struktur Organisasi BMD
+                                            Struktur Organisasi Bidang
+                                            Pengelolaan Milik Daerah
                                         </h2>
                                         <p className="mt-2 text-sm leading-6 text-gray-600">
                                             Badan Keuangan dan Aset Daerah
@@ -137,7 +138,7 @@ export default function About() {
 
                                 <div className="overflow-x-auto pb-2">
                                     <div className="mx-auto max-w-70 md:max-w-full">
-                                        <div className="flex flex-col items-center">
+                                        <div className="flex flex-col items-center w-160">
                                             {leadershipStructure.map(
                                                 (position, index) => (
                                                     <div
@@ -165,9 +166,9 @@ export default function About() {
                                             )}
 
                                             <div className="h-6 w-px bg-cyan-300" />
-                                            <div className="h-px w-[275px] bg-cyan-300" />
-                                            <div className="grid w-[520px] grid-cols-2 gap-6">
-                                                {subfields.map((position) => (
+                                            <div className="h-px w-full max-w-[505px] bg-cyan-300" />
+                                            <div className="grid w-160 grid-cols-4 gap-6">
+                                                {subfields.map((position, index) => (
                                                     <div
                                                         key={position}
                                                         className="flex flex-col items-center"
@@ -178,12 +179,12 @@ export default function About() {
                                                                 {position}
                                                             </p>
                                                         </div>
-                                                        <div className="h-6 w-px bg-cyan-300" />
+                                                        <div className={`${index > 1 ? 'h-[95px]' : 'h-6'} w-px bg-cyan-300`} />
                                                     </div>
                                                 ))}
                                             </div>
 
-                                            <div className="h-px w-[275px] bg-cyan-300" />
+                                            <div className="h-px w-full max-w-[505px] bg-cyan-300" />
 
                                             <div className="h-8 w-px bg-cyan-300" />
                                             <div className="w-full rounded-lg border border-gray-200 bg-gray-50 p-4">

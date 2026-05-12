@@ -289,7 +289,7 @@ export default function PencarianBidangTanah() {
             </Head>
             <div className="relative h-screen w-full overflow-hidden">
             {/* Header - Fixed at top */}
-            <div className="pointer-events-auto absolute top-0 right-0 left-0 z-20 bg-cyan-500/60 shadow-md">
+            <div className="pointer-events-auto absolute top-0 right-0 left-0 z-20 bg-cyan-950/60 shadow-md">
                 <div className="container mx-auto">
                     <SiteHeader />
                 </div>
@@ -312,21 +312,20 @@ export default function PencarianBidangTanah() {
                     ref={mapRef}
                 >
                     <LayersControl position="bottomleft">
-                        {/* OpenStreetMap */}
-                        <BaseLayer checked name="Standar">
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                maxZoom={19}
-                            />
-                        </BaseLayer>
-
                         {/* Google Hybrid (Satellite + Labels) */}
-                        <BaseLayer name="Satelit">
+                        <BaseLayer checked name="Satelit">
                             <TileLayer
                                 attribution='&copy; <a href="https://www.google.com/maps">Google</a>'
                                 url="http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}"
                                 maxZoom={22}
+                            />
+                        </BaseLayer>
+                        {/* OpenStreetMap */}
+                        <BaseLayer name="Standar">
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                maxZoom={19}
                             />
                         </BaseLayer>
                     </LayersControl>
@@ -482,7 +481,7 @@ export default function PencarianBidangTanah() {
                                                         e.target.value?.trim()
                                                     )
                                                 }
-                                                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 text-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 focus:outline-none"
+                                                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 text-sm focus:border-cyan-950 focus:ring-2 focus:ring-cyan-950/20 focus:outline-none"
                                             />
                                             <SearchIcon className="absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
                                         </div>
@@ -522,7 +521,7 @@ export default function PencarianBidangTanah() {
                                                 onChange={(e) =>
                                                     setLokasi(e.target.value)
                                                 }
-                                                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 text-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 focus:outline-none"
+                                                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 text-sm focus:border-cyan-950 focus:ring-2 focus:ring-cyan-950/20 focus:outline-none"
                                             />
                                             <SearchIcon className="absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
                                         </div>
@@ -532,7 +531,7 @@ export default function PencarianBidangTanah() {
                                     <div className="flex gap-2 pt-2">
                                         <Button
                                             type="submit"
-                                            className="flex-1 bg-cyan-500 hover:bg-cyan-600"
+                                            className="flex-1 bg-cyan-700 hover:bg-cyan-950"
                                         >
                                             Cari
                                         </Button>
@@ -643,7 +642,7 @@ export default function PencarianBidangTanah() {
                                     {visiblePositionImages.length > 0 && (
                                         <div className="space-y-3 border-t pt-3">
                                             <div className="flex items-center gap-2">
-                                                <ImageIcon className="h-4 w-4 text-cyan-600" />
+                                                <ImageIcon className="h-4 w-4 text-cyan-700" />
                                                 <h3 className="text-sm font-semibold text-gray-900">
                                                     Foto Posisi Lahan
                                                 </h3>
@@ -745,7 +744,7 @@ export default function PencarianBidangTanah() {
                                         onClick={() =>
                                             openInGoogleMaps(selectedLand)
                                         }
-                                        className="w-full bg-cyan-600 hover:bg-cyan-700"
+                                        className="w-full bg-cyan-700 hover:bg-cyan-950"
                                     >
                                         <MapPin className="mr-2 h-4 w-4" />
                                         Buka di Google Maps
@@ -777,7 +776,7 @@ export default function PencarianBidangTanah() {
                             </Button>
                             <Button
                                 type="button"
-                                className="bg-cyan-600 hover:bg-cyan-700"
+                                className="bg-cyan-700 hover:bg-cyan-950"
                                 onClick={() => {
                                     setShowLoginPrompt(false);
                                     const redirectTo = `${window.location.pathname}${window.location.search}`;

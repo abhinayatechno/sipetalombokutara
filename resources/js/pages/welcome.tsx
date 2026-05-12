@@ -1,130 +1,138 @@
 import SiteHeader from '@/components/site-header';
 import { getCanonicalUrl } from '@/lib/seo';
 import { type SharedData } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, usePage, Link } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
+    const [activeSlide, setActiveSlide] = useState(0);
+
+    const slides = [
+        {
+            image: '/assets/backgroud-1.png',
+            badge: 'Inovasi Cerdas',
+            title: 'Sistem Pencarian',
+            highlight: 'Tanah Daerah',
+            description: 'Portal informasi digital terpadu untuk pencarian lokasi administratif, batas wilayah, dan dokumen spasial Kabupaten Lombok Utara secara akurat.'
+        },
+        {
+            image: '/assets/gili-meno.jpg',
+            badge: 'Transparan & Presisi',
+            title: 'Pemetaan Spasial',
+            highlight: 'Akurat',
+            description: 'Memberikan kepastian informasi pertanahan untuk mendukung pembangunan yang inklusif, berkelanjutan dan tata ruang yang rapi.'
+        },
+        {
+            image: '/assets/gili-trawangan.jpeg',
+            badge: 'Akses Mudah',
+            title: 'Layanan 24 Jam',
+            highlight: 'Terintegrasi',
+            description: 'Akses informasi pertanahan kapan saja dan di mana saja. Membawa pelayanan publik terdepan langsung ke ujung jari Anda.'
+        }
+    ];
+
+    useEffect(() => {
+        const intervalId = window.setInterval(() => {
+            setActiveSlide((prev) => (prev + 1) % slides.length);
+        }, 6000);
+        return () => window.clearInterval(intervalId);
+    }, [slides.length]);
 
     return (
         <>
-            <Head title="SIPETA (Sistem Pencarian Tanah) Kabupaten Lombok Utara">
+            <Head title="SIPETA - Lombok Utara">
                 <link rel="canonical" href={getCanonicalUrl('/')} />
-                <meta
-                    name="description"
-                    content="SIPETA (Sistem Pencarian Tanah) Kabupaten Lombok Utara adalah portal informasi pertanahan untuk pencarian bidang tanah, batas administrasi, dan dokumen geospasial."
-                />
-                <meta
-                    property="og:title"
-                    content="SIPETA (Sistem Pencarian Tanah) Kabupaten Lombok Utara"
-                />
-                <meta
-                    property="og:description"
-                    content="Portal informasi pertanahan Kabupaten Lombok Utara untuk pencarian bidang tanah, batas administrasi, dan dokumen geospasial."
-                />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/assets/logo-klu.png" />
-                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="description" content="SIPETA (Sistem Pencarian Tanah) Kabupaten Lombok Utara" />
             </Head>
-            <div className="relative min-h-screen overflow-hidden bg-cyan-400">
-                {/* Background Image with Gradient Overlay */}
-                <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url(/assets/backgroud-1.png)',
-                    }}
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-b from-cyan-500/90 to-transparent" />
 
-                <div className="container mx-auto">
-                    {/* Header Navigation */}
-                    <SiteHeader />
-
-                    {/* Main Content */}
-                    <div className="relative flex min-h-[calc(100vh-185px)] flex-col justify-between md:min-h-[calc(100vh-285px)] lg:min-h-[calc(100vh-380px)]">
-                        {/* Title - Center on mobile, left on desktop */}
-                        <div className="mt-[10vh] flex-1 px-4 pt-8 pb-6 text-center sm:px-8 sm:pb-6 sm:text-left md:pl-20 lg:mt-10 lg:pl-40">
-                            <div className="text-7xl font-extrabold text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-9xl">
-                                SIPETA
-                            </div>
-                            <div className="text-4xl font-extrabold text-white drop-shadow-2xl sm:text-4xl md:text-5xl lg:text-6xl">
-                                LOMBOK UTARA
-                            </div>
-                        </div>
-
-                        {/* Mobile Layout: Maskot left, Officials right */}
-                        <div className="relative px-4 sm:hidden">
-                            <div className="flex items-end justify-between">
-                                {/* Maskot - Left side, smaller */}
-                                <div className="relative z-30 -mb-10 shrink-0">
-                                    <img
-                                        src="/assets/maskot.png"
-                                        alt="Maskot SIPETA"
-                                        className="h-28 w-auto object-contain drop-shadow-2xl"
-                                    />
-                                </div>
-
-                                {/* Bupati & Wakil - Right side, larger */}
-                                <div className="relative -mr-3 -mb-5 flex items-end">
-                                    <img
-                                        src="/assets/user-1.png"
-                                        alt="Bupati"
-                                        className="h-44 w-auto object-contain drop-shadow-2xl"
-                                    />
-                                    <img
-                                        src="/assets/user-2.png"
-                                        alt="Wakil Bupati"
-                                        className="h-44 w-auto object-contain drop-shadow-2xl"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Desktop/Tablet Layout */}
-                        <div className="hidden gap-8 px-8 sm:grid md:grid-cols-2 md:px-12 lg:gap-12 lg:px-16">
-                            {/* Left Side - Maskot & Tagline */}
-                            <div className="z-30 -mb-44 flex flex-row items-end gap-4">
-                                <div className="relative">
-                                    <img
-                                        src="/assets/maskot.png"
-                                        alt="Maskot SIPETA"
-                                        className="max-h-60 min-h-60 max-w-60 min-w-60 drop-shadow-2xl lg:max-h-96 lg:min-h-96 lg:max-w-96 lg:min-w-96"
-                                    />
-                                </div>
-                                <div className="mb-10 w-full space-y-1 text-left text-lg font-bold text-white md:space-y-2 md:text-xl lg:text-2xl xl:text-4xl">
-                                    <div className="text-nowrap">Mau cari apa?</div>
-                                    <div>SIPETA aja!</div>
-                                </div>
-                            </div>
-
-                            {/* Right Side - Bupati & Wakil Bupati */}
-                            <div className="flex items-end justify-center">
-                                <div className="z-10 -mr-20 -mb-5 flex flex-row items-end justify-center">
-                                    <img
-                                        src="/assets/user-1.png"
-                                        alt="Bupati Lombok Utara"
-                                        className="h-64 w-auto object-contain drop-shadow-2xl md:h-80 lg:h-96 xl:h-128"
-                                    />
-                                    <img
-                                        src="/assets/user-2.png"
-                                        alt="Wakil Bupati Lombok Utara"
-                                        className="h-64 w-auto object-contain drop-shadow-2xl md:h-80 lg:h-96 xl:h-128"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div className="relative flex min-h-screen w-full flex-col overflow-hidden bg-cyan-950 font-sans selection:bg-cyan-500 selection:text-white">
+                {/* Background Slider */}
+                <div className="absolute inset-0 z-0">
+                    {slides.map((slide, idx) => (
+                        <div
+                            key={idx}
+                            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-in-out ${
+                                activeSlide === idx ? 'scale-105 opacity-100' : 'scale-100 opacity-0'
+                            }`}
+                            style={{ backgroundImage: `url(${slide.image})` }}
+                        />
+                    ))}
+                    {/* Overlay Gradient for readability */}
+                    <div className="absolute inset-0 bg-linear-to-r from-cyan-950/95 via-cyan-900/80 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-cyan-950 via-transparent to-transparent md:hidden" />
                 </div>
 
-                {/* Bottom Bar with Tagline & Website */}
-                <div className="relative bottom-0 z-20 flex h-28 w-full flex-col items-center justify-center gap-1 bg-cyan-400 text-center sm:h-40 md:h-48 lg:h-56 lg:flex-row">
-                    <div className="text-lg font-bold text-white sm:hidden">
-                        <div>Mau cari apa?</div>
-                        <div>SIPETA aja!</div>
-                    </div>
-                    <div className="rounded-full bg-white px-6 py-2 text-sm font-semibold text-cyan-600 sm:hidden sm:text-base">
-                        www.sipetalombokutara.id
+                <div className="relative z-10 flex min-h-screen flex-col">
+                    <SiteHeader />
+
+                    <main className="container mx-auto flex flex-1 flex-col items-center justify-center px-4 py-8 md:flex-row md:justify-between md:px-8 lg:px-16">
+                        
+                        {/* Text Content */}
+                        <div className="flex w-full flex-col justify-center space-y-6 md:w-1/2 lg:w-7/12">
+                            <div className="relative h-[320px] w-full sm:h-[280px] md:h-[350px]">
+                                {slides.map((slide, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out ${
+                                            activeSlide === idx 
+                                                ? 'translate-y-0 opacity-100 pointer-events-auto' 
+                                                : 'translate-y-8 opacity-0 pointer-events-none'
+                                        }`}
+                                    >
+                                        <span className="mb-4 inline-block w-fit rounded-full border border-cyan-300/30 bg-cyan-500/20 px-4 py-1.5 text-sm font-semibold text-cyan-100 backdrop-blur-md">
+                                            {slide.badge}
+                                        </span>
+                                        <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                                            {slide.title} <br />
+                                            <span className="text-transparent bg-clip-text text-cyan-300 drop-shadow-lg">
+                                                {slide.highlight}
+                                            </span>
+                                        </h1>
+                                        <p className="mt-4 max-w-lg text-base text-cyan-50 sm:text-lg md:text-xl leading-relaxed">
+                                            {slide.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Mascot Section */}
+                        <div className="relative mt-12 flex w-full justify-center md:mt-0 md:w-1/2 lg:w-5/12 pb-10 md:pb-0">
+                            {/* Decorative blob behind mascot */}
+                            <div className="absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/40 blur-[80px] filter md:h-80 md:w-80"></div>
+                            
+                            <img 
+                                src="/assets/maskot.png" 
+                                alt="Maskot SIPETA" 
+                                className="z-10 h-64 w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] md:h-[300px] lg:h-[400px] animate-[bounce_4s_ease-in-out_infinite]"
+                            />
+                        </div>
+                    </main>
+
+                    {/* Custom Footer & Slider Controls */}
+                    <div className="container relative z-20 mx-auto flex flex-col items-center justify-between gap-4 border-t border-white/10 p-6 md:flex-row md:py-8 lg:px-16">
+                        <div className="text-sm font-medium text-cyan-200">
+                            © 2026 SIPETA Kabupaten Lombok Utara
+                        </div>
+                        
+                        {/* Slider Dots */}
+                        <div className="flex gap-3">
+                            {slides.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setActiveSlide(idx)}
+                                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                                        activeSlide === idx ? 'w-10 bg-cyan-400' : 'w-2.5 bg-white/30 hover:bg-white/50'
+                                    }`}
+                                    aria-label={`Go to slide ${idx + 1}`}
+                                />
+                            ))}
+                        </div>
+
+                        <a href="https://sipetalombokutara.id" target="_blank" rel="noreferrer" className="text-sm font-semibold text-white hover:text-cyan-300 transition-colors">
+                            www.sipetalombokutara.id
+                        </a>
                     </div>
                 </div>
             </div>
